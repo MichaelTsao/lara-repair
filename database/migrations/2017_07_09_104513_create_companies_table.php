@@ -15,8 +15,8 @@ class CreateCompaniesTable extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 255);
-            $table->tinyInteger('status');
+            $table->string('name', 255)->comment('名字');
+            $table->tinyInteger('status')->comment('状态');
             $table->timestamps();
         });
     }

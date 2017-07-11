@@ -26,4 +26,28 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * 获取这个用户的所有订单
+     */
+    public function orders()
+    {
+        return $this->hasMany('App\Order');
+    }
+
+    /**
+     * 获取该用户所属的地区。
+     */
+    public function area()
+    {
+        return $this->belongsTo('App\Area');
+    }
+
+    /**
+     * 获取这个用户可能对应的工人
+     */
+    public function worker()
+    {
+        return $this->hasOne('App\Worker');
+    }
 }

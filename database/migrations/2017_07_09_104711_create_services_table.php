@@ -15,6 +15,10 @@ class CreateServicesTable extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name', 255)->comment('名字');
+            $table->decimal('price')->comment('价格');
+            $table->integer('company_id')->comment('公司');
+            $table->tinyInteger('status')->comment('状态');
             $table->timestamps();
         });
     }
