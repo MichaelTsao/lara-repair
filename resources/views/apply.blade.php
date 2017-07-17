@@ -11,11 +11,15 @@
                             {{ csrf_field() }}
 
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                <label for="name" class="col-md-4 control-label">名字</label>
+                                <label for="name" class="col-md-4 control-label">公司</label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
-
+                                    <select id="company" class="form-control" name="company" required autofocus>
+                                        @foreach($companies as $item)
+                                            <option value="{{ $item->id }}"
+                                                    @if($item->id == old('company')) selected @endif>{{ $item->name }}</option>
+                                        @endforeach
+                                    </select>
                                     @if ($errors->has('name'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>
@@ -24,53 +28,36 @@
                                 </div>
                             </div>
 
-                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label for="email" class="col-md-4 control-label">邮件地址</label>
+                            <div class="form-group{{ $errors->has('department') ? ' has-error' : '' }}">
+                                <label for="department" class="col-md-4 control-label">部门</label>
 
                                 <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                                    <input id="department" type="text" class="form-control" name="department"
+                                           value="{{ old('department') }}" required>
 
-                                    @if ($errors->has('email'))
+                                    @if ($errors->has('department'))
                                         <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('department') }}</strong>
                                     </span>
                                     @endif
                                 </div>
                             </div>
 
-                            <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
-                                <label for="phone" class="col-md-4 control-label">手机号</label>
+                            <div class="form-group{{ $errors->has('level') ? ' has-error' : '' }}">
+                                <label for="level" class="col-md-4 control-label">等级</label>
 
                                 <div class="col-md-6">
-                                    <input id="phone" type="tel" class="form-control" name="phone" value="{{ old('phone') }}">
-
-                                    @if ($errors->has('phone'))
+                                    <select id="level" class="form-control" name="level">
+                                        @foreach($levels as $key => $item)
+                                            <option value="{{ $key }}"
+                                                    @if($key == old('level')) selected @endif>{{ $item }}</option>
+                                        @endforeach
+                                    </select>
+                                    @if ($errors->has('level'))
                                         <span class="help-block">
-                                        <strong>{{ $errors->first('phone') }}</strong>
+                                        <strong>{{ $errors->first('level') }}</strong>
                                     </span>
                                     @endif
-                                </div>
-                            </div>
-
-                            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                <label for="password" class="col-md-4 control-label">密码</label>
-
-                                <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control" name="password" required>
-
-                                    @if ($errors->has('password'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="password-confirm" class="col-md-4 control-label">确认密码</label>
-
-                                <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                                 </div>
                             </div>
 

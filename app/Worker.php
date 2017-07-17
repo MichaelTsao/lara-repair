@@ -6,6 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Worker extends Model
 {
+    const LEVELS = [1 => '一级', 2 => '二级', 3 => '三级', 4 => '四级', 5 => '五级',];
+
+    const STATUS_NORMAL = 1;
+    const STATUS_PEND = 2;
+    const STATUS_CLOSED = 3;
+
+    protected $guarded = [];
+
     /**
      * 获取这个工人的所有订单
      */

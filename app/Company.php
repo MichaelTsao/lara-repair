@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
 {
+    const STATUS_NORMAL = 1;
+    const STATUS_CLOSED = 2;
+
     /**
      * 获取这个公司的所有产品
      */
