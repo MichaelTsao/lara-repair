@@ -27,10 +27,19 @@ class ComposerServiceProvider extends ServiceProvider
 //            'profile', 'App\Http\ViewComposers\ProfileComposer'
 //        );
 
-        // Using Closure based composers...
         View::composer('apply', function ($view) {
             $view->with('companies', Company::where('status', Company::STATUS_NORMAL)->get());
             $view->with('levels', Worker::LEVELS);
+        });
+
+        View::composer('home', function ($view) {
+            $isWorker = false;
+            if ($worker = \Auth::user()->worker) {
+                if ($worker->status == \App\Worker::STATUS_NORMAL) {
+                    $isWorker = true;
+                }
+            }
+            $view->with('isWorker', $isWorker);
         });
     }
 }

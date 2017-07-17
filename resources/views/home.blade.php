@@ -8,11 +8,11 @@
                     <h1>维修通</h1>
 
                     <p class="lead">最简单的维修平台</p>
-                    @if(Auth::user()->worker)
+                    @if($isWorker)
                         <p>工人版</p>
                     @endif
                     <br/>
-                    @if(Auth::user()->worker)
+                    @if($isWorker)
                         <p><a class="btn btn-lg btn-info" href="/worker/orders-list">我的订单列表</a></p>
                     @else
                         <p><a class="btn btn-lg btn-success" href="/orders/choose-service">立即下单</a></p>
